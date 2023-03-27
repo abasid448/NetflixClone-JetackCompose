@@ -1,10 +1,11 @@
 package com.netflix.netflix.ui.screen.downloads
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.netflix.netflix.R
 import com.netflix.netflix.ui.screen.welcome.FullWidthButton
+
 
 @Composable
 
@@ -31,7 +33,7 @@ fun DownloadScreenTopBar() {
         Row(
             modifier = Modifier
                 .weight(2f)
-                .padding(15.dp), verticalAlignment = Alignment.CenterVertically
+                .padding(20.dp), verticalAlignment = Alignment.CenterVertically
         ) {
 
             Text(
@@ -70,37 +72,40 @@ fun DownloadScreenTopBar() {
 fun DownloadScreenTexts() {
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(15.dp),
-        horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top
+            .padding(15.dp)
+            .wrapContentHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_baseline_settings_24),
+                tint = Color.White,
                 contentDescription = ""
             )
             Text(text = "Smart Downloads", fontSize = 10.sp, color = Color.White)
         }
 
-        Text(
-            text = "Introducing downloads for",
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = TextStyle(fontSize = 28.sp, color = Color.White)
-        )
+        Spacer(modifier = Modifier.height(10.dp))
 
+        Row( modifier = Modifier
+            .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_downarrow),
+                tint = Color.White,
+                contentDescription = ""
+            )
+            Text(text = "Downloads for You", fontSize = 22.sp,fontWeight = FontWeight.Bold , color = Color.White)
+        }
 
-        Text(
-            text = "You",
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = TextStyle(fontSize = 28.sp, color = Color.White)
-        )
+        Spacer(modifier = Modifier.height(50.dp))
 
         Text(
             text = "we'll download a personalised selection of",
@@ -122,36 +127,17 @@ fun DownloadScreenTexts() {
 
         Box(modifier = Modifier
             .fillMaxWidth()
-            .height(400.dp)) {
-            Image(
-                painter = painterResource(id = R.drawable.download),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
+            .height(430.dp)) {
 
         }
         Spacer(modifier = Modifier.height(20.dp))
 
+        Spacer(modifier = Modifier.height(20.dp))
 
         FullWidthButton(
             contentColor = Color.White,
-            containerColor = Color.Blue,
-            buttonText = "Set Up"
-        ) {}
-        Spacer(modifier = Modifier.height(20.dp))
-
-        FullWidthButton(
-            contentColor = Color.Black,
-            containerColor = Color.White,
+            containerColor = Color.DarkGray,
             buttonText = "See what you can download"
-        )
-
-        {
-
-        }
-
-
+        ){}
     }
-
-
 }

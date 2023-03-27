@@ -18,6 +18,25 @@ data class FastLaughPagerData(
 )
 
 val fastLaughList = listOf(
+
+    FastLaughPagerData(
+        color = Color.Black,
+        "Lol",
+        R.drawable.ic_baseline_sentiment_very_satisfied_24,
+        "My List",R.drawable.ic_baseline_add_24,
+        "Share",R.drawable.ic_baseline_send_24,"Play",
+        R.drawable.ic_baseline_play_arrow_24,R.drawable.ic_baseline_volume_up_24
+    ),
+
+    FastLaughPagerData(
+        color = Color.Cyan,
+        "Lol",
+        R.drawable.ic_baseline_sentiment_very_satisfied_24,
+        "My List",R.drawable.ic_baseline_add_24,
+        "Share",R.drawable.ic_baseline_send_24,"Play",
+        R.drawable.ic_baseline_play_arrow_24,R.drawable.ic_baseline_volume_up_24
+    ),
+
     FastLaughPagerData(
         color = Color.Magenta,
         "Lol",

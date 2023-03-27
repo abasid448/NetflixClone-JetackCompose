@@ -40,7 +40,7 @@ fun MovieCardList() {
 }
 
 @Composable
-fun MovieCard(text: String, items: List<MovieItemcard>) {
+fun MovieCard(text: String, items: List<MovieItemcard<Any?>>) {
 
     Text(
         text = text,
@@ -66,7 +66,7 @@ fun MovieCard(text: String, items: List<MovieItemcard>) {
                             .width(100.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.strangerthings),
+                            painter = painterResource(id = R.drawable.poster2),
                             contentDescription = "",
                             contentScale = ContentScale.Crop
                         )

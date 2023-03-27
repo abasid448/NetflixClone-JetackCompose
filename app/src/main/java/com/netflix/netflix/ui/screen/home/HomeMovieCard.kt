@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +30,7 @@ fun MovieCard() {
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.strangerthings),
+            painter = painterResource(id = R.drawable.poster2),
             contentDescription = "",
             modifier = Modifier
                 .fillMaxWidth()
@@ -70,7 +71,7 @@ fun MovieCard() {
                     Image(
                         painter = painterResource(id = R.drawable.ic_baseline_add_24),
                         contentDescription = "",
-                        modifier = Modifier.size(30.dp)
+                        modifier = Modifier.size(25.dp)
                     )
                     Text(text = "My List", color = Color.White)
 
@@ -79,10 +80,19 @@ fun MovieCard() {
                 Button(
                     onClick = { },
                     modifier = Modifier,
-                    shape = RoundedCornerShape(15),
+                    shape = RoundedCornerShape(10),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White, contentColor = Color.Black)
                 ) {
-                    Text(text = "play", fontSize = 20.sp)
+
+                    Image(
+                        painter = painterResource(id = R.drawable.play2),
+                        contentDescription = "Image",
+                        modifier = Modifier
+                            .height(15.dp)
+                            .width(15.dp)
+
+                    )
+                    Text(text = "  play", fontSize = 20.sp)
                 }
 
                 Column(
@@ -94,7 +104,8 @@ fun MovieCard() {
                     Image(
                         painter = painterResource(id = R.drawable.ic_baseline_info_24),
                         contentDescription = "",
-                        modifier = Modifier.size(30.dp)
+                        modifier = Modifier.
+                        size(25.dp)
                     )
                     Text(text = "My Info", color = Color.White)
 
