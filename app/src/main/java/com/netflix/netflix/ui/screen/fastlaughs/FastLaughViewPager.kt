@@ -16,8 +16,9 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.VerticalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.netflix.netflix.model.FastLaughPagerData
-import com.netflix.netflix.model.fastLaughList
+import com.netflix.netflix.screenpager.FastLaughPagerData
+import com.netflix.netflix.screenpager.fastLaughList
+
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable

@@ -16,9 +16,9 @@ import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.netflix.netflix.model.MovieItemcard
-import com.netflix.netflix.model.movieList
 import com.netflix.netflix.R
+import com.netflix.netflix.screenpager.MovieItemcard
+import com.netflix.netflix.screenpager.movieList
 
 
 @Composable
@@ -40,7 +40,7 @@ fun MovieCardList() {
 }
 
 @Composable
-fun MovieCard(text: String, items: List<MovieItemcard<Any?>>) {
+fun MovieCard(text: String, items: List<MovieItemcard>) {
 
     Text(
         text = text,
@@ -77,4 +77,3 @@ fun MovieCard(text: String, items: List<MovieItemcard<Any?>>) {
         }
     }
 }
-
