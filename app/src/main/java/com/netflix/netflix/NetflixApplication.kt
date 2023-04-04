@@ -1,16 +1,9 @@
 package com.netflix.netflix
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class NetflixApplication : Application() {
-    companion object {
-        @get:Synchronized
-        lateinit var initializer: NetflixApplication
-            private set
-    }
 
-    override fun onCreate() {
-        super.onCreate()
-        initializer = this
-    }
 }
