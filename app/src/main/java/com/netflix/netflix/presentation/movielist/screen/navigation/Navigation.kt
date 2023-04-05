@@ -22,16 +22,16 @@ import com.netflix.netflix.presentation.movielist.screen.search.SearchScreen
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
-        composable("Home") {
+        composable("home") {
             HomeScreen()
         }
-        composable("Scenes") {
+        composable("fast laugh") {
             FastLaughScreen()
         }
-        composable("Search") {
+        composable("search") {
             SearchScreen()
         }
-        composable("Downloads") {
+        composable("downloads") {
             DownloadScreen()
         }
 
@@ -50,7 +50,7 @@ fun BottomNavigationBar(
             val selected = item.route == backStackEntry.value?.destination?.route
             BottomNavigationItem(selected = selected, onClick = {
                 onItemClick(item)
-            }, selectedContentColor = Color.Green, unselectedContentColor = Color.Gray, icon = {
+            }, selectedContentColor = Color.White, unselectedContentColor = Color.Gray, icon = {
                 Icon(imageVector = item.icon, contentDescription = item.name)
             }
             )
