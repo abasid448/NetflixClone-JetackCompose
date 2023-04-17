@@ -21,41 +21,41 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.netflix.netflix.presentation.movielist.MovieListViewModel
 
-@Composable
-fun TrendingMovieListScreen(
-    viewModel: MovieListViewModel = hiltViewModel()
-){
-
-    val state = viewModel.trendingState.value
-    Column(
-        modifier = Modifier
-            .fillMaxWidth().background(color = Color.Black)
-            .height(300.dp)
-    ) {
-        Text(
-            text = "PopularMovies",
-            fontWeight = FontWeight.Bold,
-            fontSize = 15.sp,
-            color = Color.White,
-            modifier = Modifier.padding(10.dp)
-        )
-        LazyRow{
-            items(state.movies){ movie ->
-                MovieListItem(movie = movie)
-            }
-        }
-        if(state.error.isNotBlank()){
-            Text(text = state.error,
-                color = MaterialTheme.colors.error,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.CenterHorizontally))
-        }
-        if (state.isLoading){
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
-        }
-    }
-
-
-}
+//@Composable
+//fun TrendingMovieListScreen(
+//    viewModel: MovieListViewModel = hiltViewModel()
+//){
+//
+//    val state = viewModel.trendingState.value
+//    Column(
+//        modifier = Modifier
+//            .fillMaxWidth().background(color = Color.Black)
+//            .height(300.dp)
+//    ) {
+//        Text(
+//            text = "PopularMovies",
+//            fontWeight = FontWeight.Bold,
+//            fontSize = 15.sp,
+//            color = Color.White,
+//            modifier = Modifier.padding(10.dp)
+//        )
+//        LazyRow{
+//            items(state.movies){ movie ->
+//                MovieListItem(movie = movie)
+//            }
+//        }
+//        if(state.error.isNotBlank()){
+//            Text(text = state.error,
+//                color = MaterialTheme.colors.error,
+//                textAlign = TextAlign.Center,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .align(Alignment.CenterHorizontally))
+//        }
+//        if (state.isLoading){
+//            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+//        }
+//    }
+//
+//
+//}

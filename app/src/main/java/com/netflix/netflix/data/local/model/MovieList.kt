@@ -1,4 +1,6 @@
-package com.netflix.netflix.domain.model
+package com.netflix.netflix.data.local.model
+
+import com.netflix.netflix.data.local.model.Movie
 
 data class MovieList(
     val page: Int,

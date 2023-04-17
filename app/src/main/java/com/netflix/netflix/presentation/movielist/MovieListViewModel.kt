@@ -9,19 +9,33 @@ import com.netflix.netflix.common.ApiConstants.TOP_RATED_MOVIES
 import com.netflix.netflix.common.ApiConstants.TRENDING_MOVIES
 import com.netflix.netflix.common.ApiConstants.UPCOMING_MOVIES
 import com.netflix.netflix.common.Resource
+import com.netflix.netflix.data.local.model.Movie
+import com.netflix.netflix.domain.usecase.getmovies.GetMovieUseCase
 import com.netflix.netflix.domain.usecase.getmovies.GetPopularMoviesUseCase
+import com.netflix.netflix.presentation.movieinfo.MovieInfoState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getMovieUseCase: GetMovieUseCase
 ) : ViewModel() {
 
     private val _state = mutableStateOf(MovieListState())
     val state: State<MovieListState> = _state
+    private val _infoState = mutableStateOf(MovieInfoState())
+    val infoState: State<MovieInfoState> = _infoState
+
+
+    private val _detailMovie = MutableStateFlow<Movie?>(null)
+    val detailMovie: StateFlow<Movie?> = _detailMovie
+
     private val _trendingState = mutableStateOf(MovieListState())
     val trendingState: State<MovieListState> = _trendingState
 
@@ -51,22 +65,22 @@ class MovieListViewModel @Inject constructor(
                 is Resource.Success -> {
                     when (categoryId) {
                         POPULAR_MOVIES -> _popularMovieState.value =
-                            MovieListState(movies = result.data?.results ?: emptyList())
+                            MovieListState(movies = result.data ?: emptyList())
 
                         TRENDING_MOVIES -> _trendingMovieState.value =
-                            MovieListState(movies = result.data?.results ?: emptyList())
+                            MovieListState(movies = result.data ?: emptyList())
 
                         UPCOMING_MOVIES -> _upcomingMovieState.value =
-                            MovieListState(movies = result.data?.results ?: emptyList())
+                            MovieListState(movies = result.data ?: emptyList())
 
                         TOP_RATED_MOVIES -> _topRatedMovieState.value =
-                            MovieListState(movies = result.data?.results ?: emptyList())
+                            MovieListState(movies = result.data ?: emptyList())
                     }
                 }
                 is Resource.Error -> {
-                    when (categoryId){
+                    when (categoryId) {
                         POPULAR_MOVIES -> _popularMovieState.value =
-                            MovieListState(error = result.message ?: "An unexpected error occured" )
+                            MovieListState(error = result.message ?: "An unexpected error occured")
                         TRENDING_MOVIES -> _trendingMovieState.value =
                             MovieListState(error = result.message ?: "An unexpected error occured")
 
@@ -80,9 +94,9 @@ class MovieListViewModel @Inject constructor(
 
                 }
                 is Resource.Loading -> {
-                    when(categoryId){
+                    when (categoryId) {
                         POPULAR_MOVIES -> _popularMovieState.value =
-                            MovieListState(isLoading = true )
+                            MovieListState(isLoading = true)
                         TRENDING_MOVIES -> _trendingMovieState.value =
                             MovieListState(isLoading = true)
 
@@ -99,4 +113,12 @@ class MovieListViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
+    fun getMovie(movieId: Int): State<MovieInfoState> {
+        viewModelScope.launch {
+            getMovieUseCase.execute(movieId).collect {
+                _infoState.value = MovieInfoState(movie = it)
+            }
+        }
+        return infoState
+    }
 }

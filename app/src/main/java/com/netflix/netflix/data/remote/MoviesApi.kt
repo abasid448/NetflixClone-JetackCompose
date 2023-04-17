@@ -1,7 +1,7 @@
 package com.netflix.netflix.data.remote
 
 import com.netflix.netflix.common.ApiConstants.API_KEY
-import com.netflix.netflix.domain.model.MovieList
+import com.netflix.netflix.data.local.model.MovieList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

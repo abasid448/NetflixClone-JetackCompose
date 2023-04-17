@@ -1,5 +1,6 @@
 package com.netflix.netflix.presentation.movielist.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,13 +20,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.netflix.netflix.presentation.Screen
 import com.netflix.netflix.presentation.movielist.MovieListState
 
 @Composable
 fun MovieListScreen(
-    title:String,
-    movieListState: MovieListState
-) {
+    title: String,
+    movieListState: MovieListState,
+    navController: NavController,
+
+    ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -41,7 +46,12 @@ fun MovieListScreen(
         )
         LazyRow {
             items(movieListState.movies) { movie ->
-                MovieListItem(movie = movie)
+                MovieListItem(movie = movie, onItemClick = {
+                    Log.d("abhi", "dffff")
+                    navController.navigate(
+                        Screen.MovieDetailScreen.withArgs(movie.movieId.toString())
+                    )
+                })
             }
         }
         if (movieListState.error.isNotBlank()) {

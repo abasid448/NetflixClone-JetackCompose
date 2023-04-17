@@ -1,8 +1,10 @@
-package com.netflix.netflix.domain.model
+package com.netflix.netflix.data.local.model
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Movie(
     @SerializedName("id")
     @PrimaryKey(autoGenerate = false)

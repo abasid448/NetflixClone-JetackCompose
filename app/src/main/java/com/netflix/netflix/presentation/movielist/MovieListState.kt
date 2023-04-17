@@ -1,6 +1,6 @@
 package com.netflix.netflix.presentation.movielist
 
-import com.netflix.netflix.domain.model.Movie
+import com.netflix.netflix.data.local.model.Movie
 
 data class MovieListState(
     val isLoading : Boolean = false,
